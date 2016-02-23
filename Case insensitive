@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteMap lower int:tolower
+RewriteCond ${lower:%{REQUEST_URI}} -U
+RewriteRule [A-Z] ${lower:%{REQUEST_URI}} [R=302,L]
+
+ErrorDocument 404 /404.shtml
