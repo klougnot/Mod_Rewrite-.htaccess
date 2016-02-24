@@ -1,0 +1,27 @@
+#Drop this into the same directroy as the files to produce clean looking URLS.
+
+RewriteEngine On
+
+
+#if file or folder exist do not rewrite
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-l
+
+#RewriteBase if only using one .htacess for whole site
+
+
+#Works
+#RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+#Works
+#RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+).html$ index.php?var1=$1&var2=$2&var3=$3 [QSA,L]
+
+#Works
+#RewriteRule ^([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+).html$ index.php?var1=$1&var2=$2&var3=$3 [QSA,L]
+
+#works
+#RewriteRule ^([a-zA-Z0-9]+)-([a-zA-Z0-9]+)-([a-zA-Z0-9]+).html$ index.php?var1=$1&var2=$2&var3=$3 [QSA,L]
+
+#works  This is one of my favorite Regular expressions. Turns this-is-mine.html into var1=this var2=is var3=mine
+RewriteRule ^([a-zA-Z0-9]+)-([a-zA-Z0-9]+)-([a-zA-Z0-9]+).([a-zA-Z]{1,5})$ index.php?var1=$1&var2=$2&var3=$3 [QSA,L]
